@@ -5,6 +5,14 @@ convert-units
 
 A handy utility for converting between quantities in different units.
 
+Changes from [ben-ng/convert-units](https://github.com/ben-ng/convert-units)
+--------------
+Added multilingual definitions feature(all tests are passed).
+
+Currently supported languages are English(default) and Korean.
+
+You can add language packs in `./lib/definitions/lang`
+
 Installation
 -----
 
@@ -99,6 +107,27 @@ convert().describe('kg')
 */
 ```
 
+To get a detailed description of a unit with another language.
+```js
+convert(null, 'ko').describe('kg')
+```
+or
+```js
+convert().lang('ko').describe('kg')
+```
+```js
+/*
+  {
+    abbr: 'kg'
+  , measure: 'mass'
+  , system: 'metric'
+  , singular: '킬로그램'
+  , plural: '킬로그램'
+  }
+*/
+```
+
+
 To get detailed descriptions of all units, use `list`.
 
 ```js
@@ -110,6 +139,27 @@ convert().list()
   , system: 'metric'
   , singular: 'Kilogram'
   , plural: 'Kilograms'
+  }, ...]
+*/
+```
+
+To get detailed descriptions of all units with another language, use `list`.
+```js
+convert(null, 'ko').list()
+```
+or
+```js
+convert().lang('ko').list()
+```
+```js
+convert().list()
+/*
+  [{
+    abbr: 'kg'
+  , measure: 'mass'
+  , system: 'metric'
+  , singular: '킬로그램'
+  , plural: '킬로그램'
   }, ...]
 */
 ```
@@ -128,6 +178,32 @@ convert().list('mass')
   }, ...]
 */
 ```
+
+You can also get detailed descriptions of all units for a measure with another language:
+```js
+convert(null, 'ko').list('mass')
+```
+or
+```js
+convert().lang('ko').list('mass')
+```
+```js
+convert().list('mass')
+/*
+  [{
+    abbr: 'kg'
+  , measure: 'mass'
+  , system: 'metric'
+  , singular: '킬로그램'
+  , plural: '킬로그램'
+  }, ...]
+*/
+```
+
+Supported languages
+----------------------
+- en(default)
+- ko
 
 Supported Units
 ---------------
